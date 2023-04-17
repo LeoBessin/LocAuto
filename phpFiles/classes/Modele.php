@@ -1,6 +1,7 @@
 <?php
-require_once "Marque.php";
-require_once "Categorie.php";
+require_once "classes/Marque.php";
+require_once "classes/Categorie.php";
+const PATH_IMG = "../Assets/images/car-pictures/";
 class Modele {
     // Atributs
     private ?int $id;
@@ -8,9 +9,6 @@ class Modele {
     private ?string $image;
     private ?Marque $marque;
     private ?Categorie $categorie;
-
-    // Constants
-    const PATH_IMG = "../../Assets/images/car-pictures/";
 
     // Methods
     public function __construct($id,$libelle,$image,$marque,$categorie) {

@@ -1,5 +1,5 @@
 <?php
-require_once "Modele.php";
+require_once "classes/Modele.php";
 class Voiture {
     // Atributs
     private ?string $immatriculation;
