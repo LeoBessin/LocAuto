@@ -1,6 +1,6 @@
 <?php
-require_once "classes/Option.php";
-require_once "outils/biblio.php";
+require_once "classes/OptionClass.php";
+require_once "tools/biblio.php";
 
 class OptionDao {
 
@@ -18,12 +18,12 @@ class OptionDao {
         return self::$instance;
     }
 
-    public function dictToObj($dict):Option{
-        return new Option($dict['id_option'],$dict['libelle'],$dict['prix']);
+    public function dictToObj($dict):OptionClass{
+        return new OptionClass($dict['id_option'],$dict['libelle'],$dict['prix']);
     }
 
-    public function getObjById($id): ?Option {
-        $request = "SELECT * FROM Option WHERE id_option=$id";
+    public function getObjById($id): ?OptionClass {
+        $request = "SELECT * FROM OptionClass WHERE id_option=$id";
         $request_result = mysqli_query($this->connexion, $request);
         $ligne = mysqli_fetch_object($request_result);
         if($ligne!=null){
@@ -41,7 +41,7 @@ class OptionDao {
 
     public function getAllObj():array{
         $allObj = array();
-        $request = "SELECT * FROM Option";
+        $request = "SELECT * FROM OptionClass";
         $request_result = mysqli_query($this->connexion, $request);
         while ($ligne = mysqli_fetch_object($request_result)){
             $dict = [

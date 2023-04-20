@@ -1,5 +1,5 @@
 <?php
-    class Marque {
+    class MarqueClass {
         // Atributs
         private ?int $id;
         private ?string $libelle;

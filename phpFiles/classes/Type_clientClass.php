@@ -1,5 +1,5 @@
 <?php
-class Type_client {
+class Type_clientClass {
     // Atributs
     private ?int $id;
     private ?string $libelle;

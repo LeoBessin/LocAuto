@@ -1,18 +1,19 @@
 <?php
-require_once "classes/Voiture.php";
-require_once "classes/Client.php";
-class Location {
+require_once "classes/VoitureClass.php";
+require_once "classes/ClientClass.php";
+class LocationClass {
     // Atributs
     private ?int $id;
     private ?string $date_debut;
     private ?string $date_fin;
     private ?string $compteur_debut;
     private ?string $compteur_fin;
-    private ?Voiture $voiture;
-    private ?Client $client;
+    private ?VoitureClass $voiture;
+    private ?ClientClass $client;
+    private ?array $option;
 
     // Methods
-    public function __construct($id,$date_debut,$date_fin,$compteur_debut,$compteur_fin,$voiture,$client) {
+    public function __construct($id,$date_debut,$date_fin,$compteur_debut,$compteur_fin,$voiture,$client,$option) {
         $this->id = $id;
         $this->date_debut = $date_debut;
         $this->date_fin = $date_fin;
@@ -20,6 +21,7 @@ class Location {
         $this->compteur_fin = $compteur_fin;
         $this->voiture = $voiture;
         $this->client = $client;
+        $this->option = $option;
     }
     public function getId(): int{
         return $this->id;
@@ -36,11 +38,14 @@ class Location {
     public function getCompteur_fin(): string{
         return $this->compteur_fin;
     }
-    public function getVoiture(): Voiture{
+    public function getVoiture(): VoitureClass{
         return $this->voiture;
     }
-    public function getClient(): Client{
+    public function getClient(): ClientClass{
         return $this->client;
+    }
+    public function getOption(): array{
+        return $this->option;
     }
 
 }

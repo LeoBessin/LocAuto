@@ -1,6 +1,6 @@
 <?php
-require_once "classes/Categorie.php";
-require_once "outils/biblio.php";
+require_once "classes/CategorieClass.php";
+require_once "tools/biblio.php";
 
 class CategorieDao {
 
@@ -18,12 +18,12 @@ class CategorieDao {
         return self::$instance;
     }
 
-    public function dictToObj($dict):Categorie{
-        return new Categorie($dict['id_categorie'],$dict['libelle'],$dict['prix']);
+    public function dictToObj($dict):CategorieClass{
+        return new CategorieClass($dict['id_categorie'],$dict['libelle'],$dict['prix']);
     }
 
-    public function getObjById($id): ?Categorie {
-        $request = "SELECT * FROM Categorie WHERE id_categorie='$id'";
+    public function getObjById($id): ?CategorieClass {
+        $request = "SELECT * FROM CategorieClass WHERE id_categorie='$id'";
         $request_result = mysqli_query($this->connexion, $request);
         $ligne = mysqli_fetch_object($request_result);
         if($ligne!=null){
@@ -41,7 +41,7 @@ class CategorieDao {
 
     public function getAllObj():array{
         $allObj = array();
-        $request = "SELECT * FROM Categorie";
+        $request = "SELECT * FROM CategorieClass";
         $request_result = mysqli_query($this->connexion, $request);
         while ($ligne = mysqli_fetch_object($request_result)){
             $dict = [

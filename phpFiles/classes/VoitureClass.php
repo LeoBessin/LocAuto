@@ -1,10 +1,10 @@
 <?php
-require_once "classes/Modele.php";
-class Voiture {
+require_once "classes/ModeleClass.php";
+class VoitureClass {
     // Atributs
     private ?string $immatriculation;
     private ?int $compteur;
-    private ?Modele $modele;
+    private ?ModeleClass $modele;
 
     // Methods
     public function __construct($immatriculation,$compteur,$modele) {
@@ -18,7 +18,7 @@ class Voiture {
     public function getCompteur(): int{
         return $this->compteur;
     }
-    public function getModele(): Modele{
+    public function getModele(): ModeleClass{
         return $this->modele;
     }
 

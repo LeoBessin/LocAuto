@@ -1,7 +1,7 @@
 <?php
-class Categorie {
+class OptionClass {
     // Atributs
-    private ?string $id;
+    private ?int $id;
     private ?string $libelle;
     private ?float $prix;
 
@@ -11,7 +11,7 @@ class Categorie {
         $this->libelle = $libelle;
         $this->prix = $prix;
     }
-    public function getId(): string{
+    public function getId(): int{
         return $this->id;
     }
     public function getLibelle(): string{

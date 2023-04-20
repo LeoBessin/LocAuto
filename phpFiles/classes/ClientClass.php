@@ -1,12 +1,12 @@
 <?php
-require_once "Type_client.php";
-class Client {
+require_once "classes/Type_clientClass.php";
+class ClientClass {
     // Atributs
     private ?int $id;
     private ?string $nom;
     private ?string $prenom;
     private ?string $adresse;
-    private ?Type_client $type_client;
+    private ?Type_clientClass $type_client;
 
     // Methods
     public function __construct($id,$nom,$prenom,$adresse,$type_client) {
@@ -28,7 +28,7 @@ class Client {
     public function getAdresse(): string{
         return $this->adresse;
     }
-    public function getType_client(): Type_client{
+    public function getType_client(): Type_clientClass{
         return $this->type_client;
     }
 

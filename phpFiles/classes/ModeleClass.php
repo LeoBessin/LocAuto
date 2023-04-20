@@ -1,14 +1,14 @@
 <?php
-require_once "classes/Marque.php";
-require_once "classes/Categorie.php";
+require_once "classes/MarqueClass.php";
+require_once "classes/CategorieClass.php";
 const PATH_IMG = "../Assets/images/car-pictures/";
-class Modele {
+class ModeleClass {
     // Atributs
     private ?int $id;
     private ?string $libelle;
     private ?string $image;
-    private ?Marque $marque;
-    private ?Categorie $categorie;
+    private ?MarqueClass $marque;
+    private ?CategorieClass $categorie;
 
     // Methods
     public function __construct($id,$libelle,$image,$marque,$categorie) {
@@ -27,10 +27,10 @@ class Modele {
     public function getImage(): string{
         return PATH_IMG.$this->image;
     }
-    public function getMarque(): Marque{
+    public function getMarque(): MarqueClass{
         return $this->marque;
     }
-    public function getCategorie(): Categorie{
+    public function getCategorie(): CategorieClass{
         return $this->categorie;
     }
 
