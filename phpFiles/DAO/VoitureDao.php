@@ -18,22 +18,17 @@ class VoitureDao {
         }
         return self::$instance;
     }
-    public function dictToObj($dict):VoitureClass{
+    public function dictToObj($data):VoitureClass{
         $DaoModele = ModeleDao::getInstance();
-        $modele = $DaoModele->getObjById($dict['id_modele']);
-        return new VoitureClass($dict['immatriculation'],$dict['compteur'],$modele);
+        $modele = $DaoModele->getObjById($data->id_modele);
+        return new VoitureClass($data->immatriculation,$data->compteur,$modele);
     }
     public function getObjById($id): ?VoitureClass {
-        $request = "SELECT * FROM VoitureClass WHERE immatriculation='$id'";
+        $request = "SELECT * FROM Voiture WHERE immatriculation='$id'";
         $request_result = mysqli_query($this->connexion, $request);
-        $ligne = mysqli_fetch_object($request_result);
-        if($ligne!=null){
-            $dict = [
-                'immatriculation' => $ligne->immatriculation,
-                'compteur' => $ligne->compteur,
-                'id_modele' => $ligne->id_modele
-            ];
-            return $this->dictToObj($dict);
+        $data = mysqli_fetch_object($request_result);
+        if($data!=null){
+            return $this->dictToObj($data);
         } else {
             return null;
         }
@@ -41,15 +36,10 @@ class VoitureDao {
     }
     public function getAllObj():array{
         $allObj = array();
-        $request = "SELECT * FROM VoitureClass";
+        $request = "SELECT * FROM Voiture";
         $request_result = mysqli_query($this->connexion, $request);
-        while ($ligne = mysqli_fetch_object($request_result)){
-            $dict = [
-                'immatriculation' => $ligne->immatriculation,
-                'compteur' => $ligne->compteur,
-                'id_modele' => $ligne->id_modele
-            ];
-            $allObj[] = $this->dictToObj($dict);
+        while ($data = mysqli_fetch_object($request_result)){
+            $allObj[] = $this->dictToObj($data);
         }
         return $allObj;
 

@@ -17,19 +17,15 @@ class MarqueDao {
         }
         return self::$instance;
     }
-    public function dictToObj($dict):MarqueClass{
-        return new MarqueClass($dict['id_marque'],$dict['libelle']);
+    public function dictToObj($data):MarqueClass{
+        return new MarqueClass($data->id_marque,$data->libelle);
     }
     public function getObjById($id): ?MarqueClass {
-        $request = "SELECT * FROM MarqueClass WHERE id_marque=$id";
+        $request = "SELECT * FROM Marque WHERE id_marque=$id";
         $request_result = mysqli_query($this->connexion, $request);
-        $ligne = mysqli_fetch_object($request_result);
-        if($ligne!=null){
-            $dict = [
-                'id_marque' => $ligne->id_marque,
-                'libelle' => $ligne->libelle
-            ];
-            return $this->dictToObj($dict);
+        $data = mysqli_fetch_object($request_result);
+        if($data!=null){
+            return $this->dictToObj($data);
         } else {
             return null;
         }
@@ -37,14 +33,10 @@ class MarqueDao {
     }
     public function getAllObj():array{
         $allObj = array();
-        $request = "SELECT * FROM MarqueClass";
+        $request = "SELECT * FROM Marque";
         $request_result = mysqli_query($this->connexion, $request);
-        while ($ligne = mysqli_fetch_object($request_result)){
-            $dict = [
-                'id_marque' => $ligne->id_marque,
-                'libelle' => $ligne->libelle
-            ];
-            $allObj[] = $this->dictToObj($dict);
+        while ($data = mysqli_fetch_object($request_result)){
+            $allObj[] = $this->dictToObj($data);
         }
         return $allObj;
 

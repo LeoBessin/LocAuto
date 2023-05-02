@@ -18,24 +18,17 @@ class ClientDao {
         }
         return self::$instance;
     }
-    public function dictToObj($dict):ClientClass{
+    public function dictToObj($data):ClientClass{
         $DaoType_client = Type_clientDao::getInstance();
-        $type_client = $DaoType_client->getObjById($dict['id_type_client']);
-        return new ClientClass($dict['id_client'],$dict['nom'],$dict['prenom'],$dict['adresse'],$type_client);
+        $type_client = $DaoType_client->getObjById($data->id_type_client);
+        return new ClientClass($data->id_client,$data->nom,$data->prenom,$data->adresse,$type_client);
     }
     public function getObjById($id): ?ClientClass {
-        $request = "SELECT * FROM ClientClass WHERE id_client=$id";
+        $request = "SELECT * FROM Client WHERE id_client=$id";
         $request_result = mysqli_query($this->connexion, $request);
-        $ligne = mysqli_fetch_object($request_result);
-        if($ligne!=null){
-            $dict = [
-                'id_client' => $ligne->id_client,
-                'nom' => $ligne->nom,
-                'prenom' => $ligne->prenom,
-                'adresse' => $ligne->adresse,
-                'id_type_client' => $ligne->id_type_client
-            ];
-            return $this->dictToObj($dict);
+        $data = mysqli_fetch_object($request_result);
+        if($data!=null){
+            return $this->dictToObj($data);
         } else {
             return null;
         }
@@ -43,17 +36,10 @@ class ClientDao {
     }
     public function getAllObj():array{
         $allObj = array();
-        $request = "SELECT * FROM ClientClass";
+        $request = "SELECT * FROM Client";
         $request_result = mysqli_query($this->connexion, $request);
-        while ($ligne = mysqli_fetch_object($request_result)){
-            $dict = [
-                'id_client' => $ligne->id_client,
-                'nom' => $ligne->nom,
-                'prenom' => $ligne->prenom,
-                'adresse' => $ligne->adresse,
-                'id_type_client' => $ligne->id_type_client
-            ];
-            $allObj[] = $this->dictToObj($dict);
+        while ($data = mysqli_fetch_object($request_result)){
+            $allObj[] = $this->dictToObj($data);
         }
         return $allObj;
 

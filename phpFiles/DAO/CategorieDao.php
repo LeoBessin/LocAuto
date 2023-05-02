@@ -18,21 +18,16 @@ class CategorieDao {
         return self::$instance;
     }
 
-    public function dictToObj($dict):CategorieClass{
-        return new CategorieClass($dict['id_categorie'],$dict['libelle'],$dict['prix']);
+    public function dictToObj($data):CategorieClass{
+        return new CategorieClass($data->id_categorie,$data->libelle,$data->prix);
     }
 
     public function getObjById($id): ?CategorieClass {
-        $request = "SELECT * FROM CategorieClass WHERE id_categorie='$id'";
+        $request = "SELECT * FROM Categorie WHERE id_categorie='$id'";
         $request_result = mysqli_query($this->connexion, $request);
-        $ligne = mysqli_fetch_object($request_result);
-        if($ligne!=null){
-            $dict = [
-                'id_categorie' => $ligne->id_categorie,
-                'libelle' => $ligne->libelle,
-                'prix' => $ligne->prix
-            ];
-            return $this->dictToObj($dict);
+        $data = mysqli_fetch_object($request_result);
+        if($data!=null){
+            return $this->dictToObj($data);
         } else {
             return null;
         }
@@ -41,15 +36,10 @@ class CategorieDao {
 
     public function getAllObj():array{
         $allObj = array();
-        $request = "SELECT * FROM CategorieClass";
+        $request = "SELECT * FROM Categorie";
         $request_result = mysqli_query($this->connexion, $request);
-        while ($ligne = mysqli_fetch_object($request_result)){
-            $dict = [
-                'id_categorie' => $ligne->id_categorie,
-                'libelle' => $ligne->libelle,
-                'prix' => $ligne->prix
-            ];
-            $allObj[] = $this->dictToObj($dict);
+        while ($data = mysqli_fetch_object($request_result)){
+            $allObj[] = $this->dictToObj($data);
         }
         return $allObj;
 

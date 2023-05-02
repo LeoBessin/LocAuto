@@ -17,20 +17,16 @@ class Type_clientDao {
         }
         return self::$instance;
     }
-    public function dictToObj($dict):Type_clientClass{
-        return new Type_clientClass($dict['id_type_client'],$dict['libelle']);
+    public function dictToObj($data):Type_clientClass{
+        return new Type_clientClass($data->id_type_client,$data->libelle);
     }
 
     public function getObjById($id): ?Type_clientClass {
-        $request = "SELECT * FROM Type_clientClass WHERE id_type_client=$id";
+        $request = "SELECT * FROM Type_client WHERE id_type_client=$id";
         $request_result = mysqli_query($this->connexion, $request);
-        $ligne = mysqli_fetch_object($request_result);
-        if($ligne!=null){
-            $dict = [
-                'id_type_client' => $ligne->id_type_client,
-                'libelle' => $ligne->libelle
-            ];
-            return $this->dictToObj($dict);
+        $data = mysqli_fetch_object($request_result);
+        if($data!=null){
+            return $this->dictToObj($data);
         } else {
             return null;
         }
@@ -38,14 +34,10 @@ class Type_clientDao {
     }
     public function getAllObj():array{
         $allObj = array();
-        $request = "SELECT * FROM Type_clientClass";
+        $request = "SELECT * FROM Type_client";
         $request_result = mysqli_query($this->connexion, $request);
-        while ($ligne = mysqli_fetch_object($request_result)){
-            $dict = [
-                'id_type_client' => $ligne->id_type_client,
-                'libelle' => $ligne->libelle
-            ];
-            $allObj[] = $this->dictToObj($dict);
+        while ($data = mysqli_fetch_object($request_result)){
+            $allObj[] = $this->dictToObj($data);
         }
         return $allObj;
 

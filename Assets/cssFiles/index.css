@@ -1,0 +1,16 @@
+#side-bar{
+    background: purple;
+    height: 100vh;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    transition: ease-out .4s;
+}
+.show-side-bar{
+    left: 70vw;
+    width: 30vw;
+}
+.hide-side-bar{
+    left: 100vw;
+    width: 0vw;
+}
