@@ -1,0 +1,15 @@
+{
+  "name": "www",
+  "version": "1.0.0",
+  "description": "> Projet réalisé dans le cadre d'une évaluation de fin de module du cours de Php de \r > [Mr Bernard Valton](https://www.linkedin.com/in/bernard-valton-93a38322/), formateur \r > au sein de l'école d'informatique [Sup de Vinci](https://www.supdevinci.fr/). \r ## Stack utilisé :\r - Front End :\r   - HTML\r   - CSS\r   - JavaScript\r - Back End :\r   - Php\r - Base de données :\r   - MySql/MariaDB\r - Virtualisation du projet :\r   - Docker\r - Outils de gestion :\r   - Git\r   - PhpMyAdmin",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.3.2"
+  }
+}
