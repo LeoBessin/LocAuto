@@ -1,7 +1,7 @@
 <?php
-require_once "classes/VoitureClass.php";
-require_once "DAO/ModeleDao.php";
-require_once "tools/biblio.php";
+require_once "../../phpFiles/classes/VoitureClass.php";
+require_once "../../phpFiles/DAO/ModeleDao.php";
+require_once "../../phpFiles/tools/biblio.php";
 
 class VoitureDao {
 
@@ -43,6 +43,16 @@ class VoitureDao {
         }
         return $allObj;
 
+    }
+
+    public function getAllColumnsNames():array{
+        $allNames = array();
+        $request = "SELECT Column_name FROM Information_schema.columns WHERE Table_name LIKE 'Voiture'";
+        $request_result = mysqli_query($this->connexion, $request);
+        while ($ligne_name = mysqli_fetch_object($request_result)){
+            $allNames[] = $ligne_name->Column_name;
+        }
+        return $allNames;
     }
 
 }

@@ -1,6 +1,6 @@
 <?php
-require_once "classes/VoitureClass.php";
-require_once "classes/ClientClass.php";
+require_once "../../phpFiles/classes/VoitureClass.php";
+require_once "../../phpFiles/classes/ClientClass.php";
 class LocationClass {
     // Atributs
     private ?int $id;

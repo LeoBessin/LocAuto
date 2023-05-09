@@ -1,7 +1,7 @@
 <?php
-require_once "classes/MarqueClass.php";
-require_once "classes/CategorieClass.php";
-const PATH_IMG = "../Assets/images/car-pictures/";
+require_once "../../phpFiles/classes/MarqueClass.php";
+require_once "../../phpFiles/classes/CategorieClass.php";
+const PATH_IMG = "../../Assets/images/car-pictures/";
 class ModeleClass {
     // Atributs
     private ?int $id;

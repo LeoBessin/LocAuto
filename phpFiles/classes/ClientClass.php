@@ -1,5 +1,5 @@
 <?php
-require_once "classes/Type_clientClass.php";
+require_once "../../phpFiles/classes/Type_clientClass.php";
 class ClientClass {
     // Atributs
     private ?int $id;

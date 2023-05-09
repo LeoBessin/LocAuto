@@ -1,6 +1,6 @@
 <?php
-require_once "classes/Type_clientClass.php";
-require_once "tools/biblio.php";
+require_once "../../phpFiles/classes/Type_clientClass.php";
+require_once "../../phpFiles/tools/biblio.php";
 
 class Type_clientDao {
 
@@ -43,6 +43,15 @@ class Type_clientDao {
 
     }
 
+    public function getAllColumnsNames():array{
+        $allNames = array();
+        $request = "SELECT Column_name FROM Information_schema.columns WHERE Table_name LIKE 'Type_client'";
+        $request_result = mysqli_query($this->connexion, $request);
+        while ($ligne_name = mysqli_fetch_object($request_result)){
+            $allNames[] = $ligne_name->Column_name;
+        }
+        return $allNames;
+    }
 
 }
 ?>

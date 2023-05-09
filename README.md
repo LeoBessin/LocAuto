@@ -5,8 +5,8 @@
 ## Stack utilisé :
 - Front End :
   - HTML
-  - CSS
   - JavaScript
+  - Tailwind Css (Framework)
 - Back End :
   - Php
 - Base de données :
