@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "tailwindcss": "^3.3.2"
+  },
+  "scripts": {
+    "reloadCss": "npx tailwindcss -i ./Assets/cssFiles/main.css -o ./Assets/cssFiles/tailwind.css"
+  }
+}
