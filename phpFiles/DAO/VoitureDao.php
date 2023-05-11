@@ -77,5 +77,11 @@ class VoitureDao {
         return $allNames;
     }
 
+    public function insertObj($immatriculation,$compteur,$idModele):void{
+        $request = "INSERT INTO Voiture (immatriculation, compteur, id_modele) VALUES (?, ?, ?)";
+        $request_result = $this->connexion->prepare($request);
+        $request_result->execute([$immatriculation, $compteur, $idModele]);
+    }
+
 }
 ?>

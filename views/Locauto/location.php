@@ -7,7 +7,7 @@ $columnsNames = $DaoLocation->getAllColumnsNames();
 fileStart();
 navBar();
 echo '<h1 class="font font-bold text-gre-900 text-2xl py-4 flex justify-center">Table Location</h1>';
-tableStart($columnsNames, true);
+tableStart($columnsNames);
 foreach ($allLocation as $location) {
     echo '<tr class="bg-white border-b hover:bg-gray-50">';
     echo '<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">' .
@@ -21,9 +21,6 @@ foreach ($allLocation as $location) {
         $location->getVoiture()->getImmatriculation() .
         "</td>";
     echo '<td class="px-6 py-4">' . $location->getClient()->getId() . "</td>";
-    echo '<td class="px-6 py-4 text-right">
-                <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a>
-            </td>';
 }
 tableEnd();
 fileEnd();

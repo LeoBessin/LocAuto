@@ -57,6 +57,17 @@ class LocationDao {
 
     }
 
+    public function getAllObjByIdClient($clientId):array{
+        $allObj = array();
+        $request = "SELECT * FROM Location WHERE id_client=".$clientId;
+        $request_result = mysqli_query($this->connexion, $request);
+        while ($data = mysqli_fetch_object($request_result)){
+            $allObj[] = $this->dictToObj($data);
+        }
+        return $allObj;
+
+    }
+
     public function getLastLocationByImmatriculation($immatriculation):?LocationClass{
         $allObj = array();
         $request = "SELECT * FROM `Location` WHERE id_voiture='$immatriculation' LIMIT 1";

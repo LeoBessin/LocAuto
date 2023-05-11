@@ -45,6 +45,17 @@ class ClientDao {
 
     }
 
+    public function getAllIdWithLocation():array{
+        $allObj = array();
+        $request = "SELECT id_client FROM `Client` RIGHT JOIN Location USING(id_client)";
+        $request_result = mysqli_query($this->connexion, $request);
+        while ($data = mysqli_fetch_object($request_result)){
+            $allObj[] = $data->id_client;
+        }
+        return $allObj;
+
+    }
+
     public function getAllColumnsNames():array{
         $allNames = array();
         $request = "SELECT Column_name FROM Information_schema.columns WHERE Table_name LIKE 'Client'";

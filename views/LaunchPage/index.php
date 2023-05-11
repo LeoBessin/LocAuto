@@ -9,7 +9,7 @@
     <link href="../../Assets/cssFiles/tailwind.css" rel="stylesheet">
 </head>
 <body >
-    <div class="bg-auto bg-no-repeat bg-center w-screen h-screen flex flex-col" style="background-image: url('../../Assets/images/background/lg-car.png')">
+    <div class="bg-auto bg-repeat bg-center w-screen h-screen  flex flex-col" style="background-image: url('../../Assets/images/background/lg-car.png')">
         <div class="flex place-self-center mt-4">
             <img width="100rem" class="place-self-center" src="../../Assets/images/logos/locauto_logo_w.svg">
         </div>
