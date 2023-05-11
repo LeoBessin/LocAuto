@@ -57,6 +57,18 @@ class LocationDao {
 
     }
 
+    public function getLastLocationByImmatriculation($immatriculation):?LocationClass{
+        $allObj = array();
+        $request = "SELECT * FROM `Location` WHERE id_voiture='$immatriculation' LIMIT 1";
+        $request_result = mysqli_query($this->connexion, $request);
+        $data = mysqli_fetch_object($request_result);
+        if($data!=null){
+            return $this->dictToObj($data);
+        } else {
+            return null;
+        }
+    }
+
     public function getAllColumnsNames():array{
         $allNames = array();
         $request = "SELECT Column_name FROM Information_schema.columns WHERE Table_name LIKE 'Location'";

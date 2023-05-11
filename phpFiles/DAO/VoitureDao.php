@@ -45,6 +45,28 @@ class VoitureDao {
 
     }
 
+    public function getAllIdAvailable():array{
+        $allObj = array();
+        $request = "SELECT immatriculation FROM Voiture RIGHT JOIN Location ON Voiture.immatriculation=Location.id_voiture;";
+        $request_result = mysqli_query($this->connexion, $request);
+        while ($data = mysqli_fetch_object($request_result)){
+            $allObj[] = $data->immatriculation;
+        }
+        return $allObj;
+
+    }
+
+    public function getAllId():array{
+        $allObj = array();
+        $request = "SELECT immatriculation FROM Voiture ;";
+        $request_result = mysqli_query($this->connexion, $request);
+        while ($data = mysqli_fetch_object($request_result)){
+            $allObj[] = $data->immatriculation;
+        }
+        return $allObj;
+
+    }
+
     public function getAllColumnsNames():array{
         $allNames = array();
         $request = "SELECT Column_name FROM Information_schema.columns WHERE Table_name LIKE 'Voiture'";

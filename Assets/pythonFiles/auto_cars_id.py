@@ -5,7 +5,7 @@ alphabet = list(string.ascii_lowercase)
 
 def create_id_car(nb_cars,nb_modele):
     id_cars = []
-    for i in range(nb):
+    for i in range(nb_cars):
         first_nb = random.randint(1,999)
         last_nb = random.randint(1,999)
         letters = random.choice(alphabet) + random.choice(alphabet) + random.choice(alphabet)

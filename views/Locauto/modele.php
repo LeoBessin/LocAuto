@@ -6,6 +6,7 @@ $allModele = $DaoModele->getAllObj();
 $columnsNames = $DaoModele->getAllColumnsNames();
 fileStart();
 navBar();
+echo '<h1 class="font font-bold text-gre-900 text-2xl py-4 flex justify-center">Table Modèle</h1>';
 tableStart($columnsNames);
 foreach ($allModele as $modele) {
     $imgPath = $modele->getImage();
