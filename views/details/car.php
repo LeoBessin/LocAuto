@@ -1,9 +1,12 @@
 <?php
 include "../../phpFiles/DAO/VoitureDao.php";
+include "../../phpFiles/DAO/LocationDao.php";
 include "../../phpFiles/widgets/html-part.php";
 $immatriculation = $_GET["id"];
 $DaoVoiture = VoitureDao::getInstance();
+$DaoLocation = LocationDao::getInstance();
 $voiture = $DaoVoiture->getObjById($immatriculation);
+$allLocation = $DaoLocation->getAllObjByImmatriculation($voiture->getImmatriculation());
 fileStart();
 navBar();
 ?>
@@ -31,6 +34,28 @@ navBar();
 
             </div>
         </div>
+    <div class="flex flex-col align-middle justify-center w-1/3 self-center">
+        <h2 class="font font-bold text-gre-900 text-2xl py-3 flex justify-center">Location(s)</h2>
+
+        <?php
+        foreach ($allLocation as $location){
+            tableStart($DaoLocation->getAllColumnsNames());
+            echo '<tr class="bg-white border-b hover:bg-gray-50">';
+            echo '<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">' .
+                $location->getId() .
+                "</th>";
+            echo '<td class="px-6 py-4">' . $location->getDate_debut() . "</td>";
+            echo '<td class="px-6 py-4">' . $location->getDate_fin() . "</td>";
+            echo '<td class="px-6 py-4">' . $location->getCompteur_debut() . "</td>";
+            echo '<td class="px-6 py-4">' . $location->getCompteur_fin() . "</td>";
+            echo '<td class="px-6 py-4">' .
+                $location->getVoiture()->getImmatriculation() .
+                "</td>";
+            echo '<td class="px-6 py-4">' . $location->getClient()->getId() . "</td>";
+            tableEnd();
+        }
+        ?>
+    </div>
 
 </div>
 

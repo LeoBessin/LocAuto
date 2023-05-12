@@ -34,6 +34,30 @@ class ClientDao {
         }
 
     }
+
+    public function getLastObj(): ?ClientClass {
+        $request = "SELECT * FROM `Client` ORDER BY id_client DESC LIMIT 1";
+        $request_result = mysqli_query($this->connexion, $request);
+        $data = mysqli_fetch_object($request_result);
+        if($data!=null){
+            return $this->dictToObj($data);
+        } else {
+            return null;
+        }
+
+    }
+
+    public function getAllId():array{
+        $allObj = array();
+        $request = "SELECT id_client FROM Client";
+        $request_result = mysqli_query($this->connexion, $request);
+        while ($data = mysqli_fetch_object($request_result)){
+            $allObj[] = $data->id_client;
+        }
+        return $allObj;
+
+    }
+
     public function getAllObj():array{
         $allObj = array();
         $request = "SELECT * FROM Client";
@@ -64,6 +88,12 @@ class ClientDao {
             $allNames[] = $ligne_name->Column_name;
         }
         return $allNames;
+    }
+
+    public function insertObj($id_client,$nom,$premom,$adresse,$id_type_client):void{
+        $request = "INSERT INTO Client (id_client, nom, prenom, adresse, id_type_client) VALUES (?, ?, ?, ?, ?)";
+        $request_result = $this->connexion->prepare($request);
+        $request_result->execute([$id_client,$nom,$premom,$adresse,$id_type_client]);
     }
 }
 ?>

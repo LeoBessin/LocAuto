@@ -14,12 +14,13 @@ $clientWithLoc = $DaoClient->getAllIdWithLocation();
         <?php foreach ($allClient as $client) {
             if (in_array($client->getId(), $clientWithLoc)) {
                 $color = "#06D6A0";
+                $locations = $DaoLocation->getAllObjByIdClient($client->getId());
             } else {
                 $color = "#EF476F";
+                $locations = array();
             }
-            $locations = $DaoLocation->getAllObjByIdClient($client->getId());
             echo '<button onclick="location.href=' .
-                "'../details/car.php?id=" .
+                "'../details/client.php?id=" .
                 $client->getId() .
                 "'" .
                 '">';
@@ -49,7 +50,7 @@ $clientWithLoc = $DaoClient->getAllIdWithLocation();
             echo '<div class="px-2 py-3 flex flex-col hover:cursor-pointer mt-6 hover:scale-110">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="32px" id="Layer_1"  version="1.1" viewBox="0 0 32 32" width="128px" xml:space="preserve"><path d="M28,14H18V4c0-1.104-0.896-2-2-2s-2,0.896-2,2v10H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h10v10c0,1.104,0.896,2,2,2  s2-0.896,2-2V18h10c1.104,0,2-0.896,2-2S29.104,14,28,14z"/></svg>
                 <div class="flex flex-row z-[-1] align-middle justify-center">
-                <p class="mt-4"> Add </p>
+                <p class="mt-4"> Ajouter </p>
                 </div>
             </div>';
             echo "</button>";

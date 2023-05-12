@@ -1,19 +1,21 @@
 <?php
-include "../../phpFiles/DAO/VoitureDao.php";
+include "../../phpFiles/DAO/ClientDao.php";
 include "../../phpFiles/widgets/html-part.php";
-$DaoVoiture = VoitureDao::getInstance();
-$immatriculation = $_POST['immatriculation'];
-$compteur = $_POST['compteur'];
-$idModele = $_POST['idModele'];
+$DaoClient = ClientDao::getInstance();
+$id = $_POST['id'];
+$lastName = $_POST['lastName'];
+$name = $_POST['name'];
+$address = $_POST['address'];
+$idTypeClient = $_POST['idTypeClient'];
 fileStart();
 navBar();
 ?>
-<h1 class="font font-bold text-gre-900 text-2xl py-3 flex justify-center">Essaie de l'ajout de la voiture à la table...</h1>
+<h1 class="font font-bold text-gre-900 text-2xl py-3 flex justify-center">Essaie de l'ajout du client à la table...</h1>
 <?php
-    $DaoVoiture->insertObj($immatriculation,$compteur,$idModele);
-    $allVoiture = $DaoVoiture->getAllId();
-    if (in_array($immatriculation,$allVoiture)){
-        echo '
+$DaoClient->insertObj($id,$lastName,$name,$address,$idTypeClient);
+$allClient = $DaoClient->getAllId();
+if (in_array($id,$allClient)){
+    echo '
 <div class="flex flex-col justify-center items-center mt-8">
     <ul class="max-w-md space-y-2 text-gray-500 list-inside flex justify-center flex-wrap flex-col">
         <li class="flex justify-center">
@@ -21,7 +23,7 @@ navBar();
             <p class="text-xl">Succés !</p>
         </li>
     </ul>
-    <a class="p-4 rounded-lg mt-8 text-white font-bold" style="background: #06D6A0" href="../Parc/index.php" >Redirection vers le parc de voitures</a>
+    <a class="p-4 rounded-lg mt-8 text-white font-bold" style="background: #06D6A0" href="../Client/index.php" >Redirection vers l annuaire des clients</a>
 </div>';
 
 }
