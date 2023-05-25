@@ -1,21 +1,20 @@
 <?php
 include "../../phpFiles/DAO/VoitureDao.php";
-include "../../phpFiles/DAO/LocationDao.php";
 include "../../phpFiles/widgets/html-part.php";
 $DaoLocation = LocationDao::getInstance();
 $DaoVoiture = VoitureDao::getInstance();
 $allVoiture = $DaoVoiture->getAllObj();
 $availableId = $DaoVoiture->getAllIdAvailable();
 $lastSelect = null;
-fileStart();
-navBar();
+fileStart("Parc");
+navBar("Parc");
 ?>
 <h1 class="font font-bold text-gre-900 text-2xl py-3 flex justify-center">Parc de voiture(s)</h1>
 <div class="flex flex-wrap flex-row z-10">
     <?php
     foreach ($allVoiture as $voiture) {
         $imgPath = $voiture->getModele()->getImage();
-        echo '<button onclick="location.href='."'../details/car.php?id=".$voiture->getImmatriculation()."'".'">';
+        echo '<button onclick="location.href='."'../Details/car.php?id=".$voiture->getImmatriculation()."'".'">';
         if (in_array($voiture->getImmatriculation(),$availableId)){
             $location = $DaoLocation->getLastLocationByImmatriculation($voiture->getImmatriculation());
             $color = "#EF476F";
@@ -36,7 +35,7 @@ navBar();
     <button onclick="location.href='../Insert/cars.php'">
 <?php
     echo '<div class="px-2 py-4 flex flex-col hover:cursor-pointer mt-6 hover:scale-110">
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="32px" id="Layer_1"  version="1.1" viewBox="0 0 32 32" width="128px" xml:space="preserve"><path d="M28,14H18V4c0-1.104-0.896-2-2-2s-2,0.896-2,2v10H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h10v10c0,1.104,0.896,2,2,2  s2-0.896,2-2V18h10c1.104,0,2-0.896,2-2S29.104,14,28,14z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" height="32px" id="Layer_1"  version="1.1" viewBox="0 0 32 32" width="128px" xml:space="preserve"><path d="M28,14H18V4c0-1.104-0.896-2-2-2s-2,0.896-2,2v10H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h10v10c0,1.104,0.896,2,2,2  s2-0.896,2-2V18h10c1.104,0,2-0.896,2-2S29.104,14,28,14z"/></svg>
                 <div class="flex flex-row z-[-1] align-middle justify-center">
                 <p class="mt-4"> Ajouter </p>
                 </div>

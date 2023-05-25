@@ -4,8 +4,8 @@ include "../../phpFiles/widgets/html-part.php";
 $DaoClient = ClientDao::getInstance();
 $allClient = $DaoClient->getAllObj();
 $columnsNames = $DaoClient->getAllColumnsNames();
-fileStart();
-navBar();
+fileStart("Client");
+navBar("Tables");
 echo '<h1 class="font font-bold text-gre-900 text-2xl py-4 flex justify-center">Table Client</h1>';
 tableStart($columnsNames);
 foreach ($allClient as $client) {

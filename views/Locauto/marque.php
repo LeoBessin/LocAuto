@@ -4,8 +4,8 @@ include "../../phpFiles/widgets/html-part.php";
 $DaoMarque = MarqueDao::getInstance();
 $allMarque = $DaoMarque->getAllObj();
 $columnsNames = $DaoMarque->getAllColumnsNames();
-fileStart();
-navBar();
+fileStart("Marque");
+navBar("Tables");
 echo '<h1 class="font font-bold text-gre-900 text-2xl py-4 flex justify-center">Table Marque</h1>';
 tableStart($columnsNames);
 foreach ($allMarque as $marque) {

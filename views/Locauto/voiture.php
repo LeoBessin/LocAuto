@@ -4,8 +4,8 @@ include "../../phpFiles/widgets/html-part.php";
 $DaoVoiture = VoitureDao::getInstance();
 $allVoiture = $DaoVoiture->getAllObj();
 $columnsNames = $DaoVoiture->getAllColumnsNames();
-fileStart();
-navBar();
+fileStart("Voiture");
+navBar("Tables");
 echo '<h1 class="font font-bold text-gre-900 text-2xl py-4 flex justify-center">Table Voiture</h1>';
 tableStart($columnsNames);
 foreach ($allVoiture as $voiture) {

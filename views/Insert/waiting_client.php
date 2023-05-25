@@ -7,8 +7,8 @@ $lastName = $_POST['lastName'];
 $name = $_POST['name'];
 $address = $_POST['address'];
 $idTypeClient = $_POST['idTypeClient'];
-fileStart();
-navBar();
+fileStart("Attente Client");
+navBar("Clients");
 ?>
 <h1 class="font font-bold text-gre-900 text-2xl py-3 flex justify-center">Essaie de l'ajout du client à la table...</h1>
 <?php
@@ -23,7 +23,7 @@ if (in_array($id,$allClient)){
             <p class="text-xl">Succés !</p>
         </li>
     </ul>
-    <a class="p-4 rounded-lg mt-8 text-white font-bold" style="background: #06D6A0" href="../Client/index.php" >Redirection vers l annuaire des clients</a>
+    <a class="p-4 rounded-lg mt-8 text-white font-bold" style="background: #06D6A0" href="../Client/index.php" >Redirection vers l'."'".'annuaire des clients</a>
 </div>';
 
 }

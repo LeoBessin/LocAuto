@@ -1,6 +1,7 @@
 <?php
 require_once "../../phpFiles/classes/ClientClass.php";
 require_once "../../phpFiles/DAO/Type_clientDao.php";
+require_once "../../phpFiles/DAO/LocationDao.php";
 require_once "../../phpFiles/tools/biblio.php";
 
 class ClientDao {
@@ -36,7 +37,7 @@ class ClientDao {
     }
 
     public function getLastObj(): ?ClientClass {
-        $request = "SELECT * FROM `Client` ORDER BY id_client DESC LIMIT 1";
+        $request = "SELECT * FROM Client ORDER BY id_client DESC LIMIT 1";
         $request_result = mysqli_query($this->connexion, $request);
         $data = mysqli_fetch_object($request_result);
         if($data!=null){
@@ -94,6 +95,17 @@ class ClientDao {
         $request = "INSERT INTO Client (id_client, nom, prenom, adresse, id_type_client) VALUES (?, ?, ?, ?, ?)";
         $request_result = $this->connexion->prepare($request);
         $request_result->execute([$id_client,$nom,$premom,$adresse,$id_type_client]);
+    }
+    public function deleteFromId($id):void
+    {
+        $DaoLocation = LocationDao::getInstance();
+        $allLocationByIdClient = $DaoLocation->getAllObjByIdClient($id);
+        foreach ($allLocationByIdClient as $location) {
+            $DaoLocation->deleteFromId($location->getId());
+        }
+        $request = "DELETE FROM Client WHERE id_client='$id'";
+        $request_result = $this->connexion->prepare($request);
+        $request_result->execute();
     }
 }
 ?>

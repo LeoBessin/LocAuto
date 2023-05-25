@@ -5,7 +5,7 @@ require_once "../../phpFiles/tools/biblio.php";
 class OptionDao {
 
     private static OptionDao $instance;
-    private $connexion;
+    private mysqli $connexion;
 
     private function __construct(){
         $this->connexion = connexionDatabase();

@@ -3,6 +3,7 @@ require_once "../../phpFiles/classes/LocationClass.php";
 require_once "../../phpFiles/DAO/VoitureDao.php";
 require_once "../../phpFiles/DAO/ClientDao.php";
 require_once "../../phpFiles/DAO/OptionDao.php";
+require_once "../../phpFiles/DAO/Choix_optionDao.php";
 require_once "../../phpFiles/tools/biblio.php";
 
 class LocationDao {
@@ -37,6 +38,18 @@ class LocationDao {
     }
     public function getObjById($id): ?LocationClass {
         $request = "SELECT * FROM Location WHERE id_location=$id";
+        $request_result = mysqli_query($this->connexion, $request);
+        $data = mysqli_fetch_object($request_result);
+        if($data!=null){
+            return $this->dictToObj($data);
+        } else {
+            return null;
+        }
+
+    }
+
+    public function getLastObj(): ?LocationClass {
+        $request = "SELECT * FROM Location ORDER BY id_location DESC LIMIT 1";
         $request_result = mysqli_query($this->connexion, $request);
         $data = mysqli_fetch_object($request_result);
         if($data!=null){
@@ -100,6 +113,49 @@ class LocationDao {
         }
         return $allNames;
     }
+
+    public function insertObj($id_location,$date_debut,$date_fin,$compteur_debut,$compteur_fin, $id_voiture,$id_client,$options):void{
+        $request = "INSERT INTO Location (id_location, date_debut, date_fin, compteur_debut, compteur_fin, id_voiture, id_client) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $request_result = $this->connexion->prepare($request);
+        $request_result->execute([$id_location,$date_debut,$date_fin,$compteur_debut,$compteur_fin, $id_voiture,$id_client]);
+        $DaoChoixOption = Choix_optionDao::getInstance();
+        $DaoChoixOption->insertObj($id_location,$options);
+    }
+
+    public function getAllId()
+    {
+        $allObj = array();
+        $request = "SELECT id_location FROM Location";
+        $request_result = mysqli_query($this->connexion, $request);
+        while ($data = mysqli_fetch_object($request_result)){
+            $allObj[] = $data->id_location;
+        }
+        return $allObj;
+    }
+
+    public function getAllImmatriculation():array
+    {
+        $allObj = array();
+        $request = "SELECT id_voiture FROM Location";
+        $request_result = mysqli_query($this->connexion, $request);
+        while ($data = mysqli_fetch_object($request_result)){
+            $allObj[] = $data->id_voiture;
+        }
+        return $allObj;
+    }
+
+    public function deleteFromId($id):void
+    {
+    $DaoChoix_option = Choix_optionDao::getInstance();
+    $allOptionByLocation = $DaoChoix_option->getObjByIdLocation($id);
+    if(!empty($allOptionByLocation)){
+        $DaoChoix_option->deleteFromIdLocation($id);
+    }
+    $request = "DELETE FROM Location WHERE id_location=$id";
+    $request_result = $this->connexion->prepare($request);
+    $request_result->execute();
+}
+
 
 
 }

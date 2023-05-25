@@ -8,7 +8,7 @@
 <body class="flex justify-center flex-col items-center align-middle">
 <?php
 include "../../phpFiles/widgets/html-part.php";
-navBar();
+navBar("Acceuil");
 ?>
 <p class="font-bold text-2xl mb-8">Bienvenue sur le projet LocAuto</p>
 <a class="p-4 rounded-full bg-gray-5 text-xl font-bold" href="../Locauto/option.php">Options</a>

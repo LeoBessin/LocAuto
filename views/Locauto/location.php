@@ -4,8 +4,8 @@ include "../../phpFiles/widgets/html-part.php";
 $DaoLocation = LocationDao::getInstance();
 $allLocation = $DaoLocation->getAllObj();
 $columnsNames = $DaoLocation->getAllColumnsNames();
-fileStart();
-navBar();
+fileStart("Location");
+navBar("Tables");
 echo '<h1 class="font font-bold text-gre-900 text-2xl py-4 flex justify-center">Table Location</h1>';
 tableStart($columnsNames);
 foreach ($allLocation as $location) {

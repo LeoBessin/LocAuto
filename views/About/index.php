@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>À propos</title>
     <link href="../../Assets/cssFiles/tailwind.css" rel="stylesheet">
 </head>
 <body class="flex justify-center flex-col items-center align-middle">
 <?php
 include "../../phpFiles/widgets/html-part.php";
-navBar();
+navBar("Propos");
 ?>
 
 

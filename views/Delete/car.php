@@ -2,18 +2,16 @@
 include "../../phpFiles/DAO/VoitureDao.php";
 include "../../phpFiles/widgets/html-part.php";
 $DaoVoiture = VoitureDao::getInstance();
-$immatriculation = $_POST['immatriculation'];
-$compteur = $_POST['compteur'];
-$idModele = $_POST['idModele'];
-fileStart("Attente Voiture");
+$idVoiture = $_GET['idVoiture'];
+fileStart("Supression Voiture");
 navBar("Parc");
 ?>
-<h1 class="font font-bold text-gre-900 text-2xl py-3 flex justify-center">Essaie de l'ajout de la voiture à la table...</h1>
+<h1 class="font font-bold text-gre-900 text-2xl py-3 flex justify-center">Essaie de la supression de la voiture à la table...</h1>
 <?php
-    $DaoVoiture->insertObj($immatriculation,$compteur,$idModele);
-    $allVoiture = $DaoVoiture->getAllId();
-    if (in_array($immatriculation,$allVoiture)){
-        echo '
+$DaoVoiture->deleteFromImmatriculation($idVoiture);
+$allVoiture = $DaoVoiture->getAllId();
+if (!in_array($idVoiture,$allVoiture)){
+    echo '
 <div class="flex flex-col justify-center items-center mt-8">
     <ul class="max-w-md space-y-2 text-gray-500 list-inside flex justify-center flex-wrap flex-col">
         <li class="flex justify-center">

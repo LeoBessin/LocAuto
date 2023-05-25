@@ -1,19 +1,36 @@
 <?php
-include "../../phpFiles/DAO/VoitureDao.php";
+include "../../phpFiles/DAO/LocationDao.php";
 include "../../phpFiles/widgets/html-part.php";
-$DaoVoiture = VoitureDao::getInstance();
-$immatriculation = $_POST['immatriculation'];
-$compteur = $_POST['compteur'];
-$idModele = $_POST['idModele'];
-fileStart("Attente Voiture");
+$DaoLocation = LocationDao::getInstance();
+$DaoOption = OptionDao::getInstance();
+$allOption = $DaoOption->getAllObj();
+$id = $_POST['id'];
+$dateDebut = $_POST['date-debut'];
+$dateFin = $_POST['date-fin'];
+$compteurDebut = $_POST['compteur-debut'];
+$compteurFin = $_POST['compteur-fin'];
+$idClient = $_POST['id-client'];
+$idVoiture = $_POST['id-voiture'];
+
+$optionChoose = array();
+
+if(isset($_POST['option'])){
+    foreach ($_POST['option'] as $option){
+        $optionChoose[] = $option;
+    }
+
+}
+
+fileStart("Attente Location");
 navBar("Parc");
 ?>
-<h1 class="font font-bold text-gre-900 text-2xl py-3 flex justify-center">Essaie de l'ajout de la voiture à la table...</h1>
+<h1 class="font font-bold text-gre-900 text-2xl py-3 flex justify-center">Essaie de l'ajout de la location à la table...</h1>
 <?php
-    $DaoVoiture->insertObj($immatriculation,$compteur,$idModele);
-    $allVoiture = $DaoVoiture->getAllId();
-    if (in_array($immatriculation,$allVoiture)){
-        echo '
+$DaoLocation->insertObj($id,$dateDebut,$dateFin,$compteurDebut,$compteurFin,$idVoiture,intval($idClient),$optionChoose);
+
+$allLocation = $DaoLocation->getAllId();
+if (in_array($id,$allLocation)) {
+    echo '
 <div class="flex flex-col justify-center items-center mt-8">
     <ul class="max-w-md space-y-2 text-gray-500 list-inside flex justify-center flex-wrap flex-col">
         <li class="flex justify-center">
@@ -25,8 +42,6 @@ navBar("Parc");
 </div>';
 
 }
-
-
 
 ?>
 

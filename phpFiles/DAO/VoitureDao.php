@@ -1,12 +1,13 @@
 <?php
 require_once "../../phpFiles/classes/VoitureClass.php";
+require_once "../../phpFiles/DAO/LocationDao.php";
 require_once "../../phpFiles/DAO/ModeleDao.php";
 require_once "../../phpFiles/tools/biblio.php";
 
 class VoitureDao {
 
     private static VoitureDAO $instance;
-    private $connexion;
+    private mysqli $connexion;
 
     private function __construct(){
         $this->connexion = connexionDatabase();
@@ -47,10 +48,14 @@ class VoitureDao {
 
     public function getAllIdAvailable():array{
         $allObj = array();
-        $request = "SELECT immatriculation FROM Voiture RIGHT JOIN Location ON Voiture.immatriculation=Location.id_voiture;";
+        $request = "SELECT immatriculation,date_fin FROM Voiture RIGHT JOIN Location ON Voiture.immatriculation=Location.id_voiture;";
         $request_result = mysqli_query($this->connexion, $request);
         while ($data = mysqli_fetch_object($request_result)){
-            $allObj[] = $data->immatriculation;
+            $dateToday = date("Y-m-d");
+            $dateEndLoc = $data->date_fin;
+            if ($dateEndLoc >= $dateToday){
+                $allObj[] = $data->immatriculation;
+            }
         }
         return $allObj;
 
@@ -81,6 +86,20 @@ class VoitureDao {
         $request = "INSERT INTO Voiture (immatriculation, compteur, id_modele) VALUES (?, ?, ?)";
         $request_result = $this->connexion->prepare($request);
         $request_result->execute([$immatriculation, $compteur, $idModele]);
+    }
+
+    public function deleteFromImmatriculation($idVoiture):void{
+        $DaoLocation = LocationDao::getInstance();
+        $allImmatriculationOfLocation = $DaoLocation->getAllImmatriculation();
+        if(in_array($idVoiture,$allImmatriculationOfLocation)){
+            $allLocation =$DaoLocation->getAllObjByImmatriculation($idVoiture);
+            foreach ($allLocation as $location){
+                $DaoLocation->deleteFromId($location->getId());
+            }
+        }
+        $request = "DELETE FROM Voiture WHERE immatriculation='$idVoiture'";
+        $request_result = $this->connexion->prepare($request);
+        $request_result->execute();
     }
 
 }
