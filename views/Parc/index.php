@@ -21,7 +21,7 @@ navBar("Parc");
             $text = $location->getClient()->getNom() . ' ' .$location->getClient()->getPrenom();
         }else {
             $color = "#06D6A0";
-            $text = "Available";
+            $text = "Disponible";
         }
         echo '<div class="px-6 py-4 flex flex-col hover:scale-110">
                 <img class="rounded-full z-[-1]" src="'.$imgPath.'"/>

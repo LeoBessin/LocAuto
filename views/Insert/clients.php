@@ -20,7 +20,7 @@ navBar("Clients");?>
 
         <label for="address" class="block mb-2 text-sm font-medium text-gray-900 ">Adresse</label>
         <input class="mb-8 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" name="address" type="text" placeholder="1 Rocket Rd.Hawthorne, CA 90250" required>
-        <label for="idTypeClient" class="block mb-2 text-sm font-medium text-gray-900 ">Sélectioner un modèle</label>
+        <label for="idTypeClient" class="block mb-2 text-sm font-medium text-gray-900 ">Sélectioner un type client</label>
         <select name="idTypeClient" class="mb-8 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
             <?php
             foreach ($allTypes as $type){

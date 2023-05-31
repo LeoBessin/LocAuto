@@ -91,10 +91,35 @@ class ClientDao {
         return $allNames;
     }
 
-    public function insertObj($id_client,$nom,$premom,$adresse,$id_type_client):void{
+    public function editObj($id_client,$nom,$prenom,$adresse,$id_type_client):void{
+        $obj = $this->getObjById($id_client);
+        if ($nom!=null){
+            $request = "UPDATE Client SET nom='$nom' WHERE id_client=$id_client";
+            $request_result = $this->connexion->prepare($request);
+            $request_result->execute();
+        }
+        if ($prenom!=null){
+            $request = "UPDATE Client SET prenom='$prenom' WHERE id_client=$id_client";
+            $request_result = $this->connexion->prepare($request);
+            $request_result->execute();
+        }
+        if ($adresse!=null){
+            $request = "UPDATE Client SET adresse='$adresse' WHERE id_client=$id_client";
+            $request_result = $this->connexion->prepare($request);
+            $request_result->execute();
+        }
+        if ($id_type_client!=null){
+            $request = "UPDATE Client SET id_type_client=$id_type_client WHERE id_client=$id_client";
+            $request_result = $this->connexion->prepare($request);
+            $request_result->execute();
+        }
+
+    }
+
+    public function insertObj($id_client,$nom,$prenom,$adresse,$id_type_client):void{
         $request = "INSERT INTO Client (id_client, nom, prenom, adresse, id_type_client) VALUES (?, ?, ?, ?, ?)";
         $request_result = $this->connexion->prepare($request);
-        $request_result->execute([$id_client,$nom,$premom,$adresse,$id_type_client]);
+        $request_result->execute([$id_client,$nom,$prenom,$adresse,$id_type_client]);
     }
     public function deleteFromId($id):void
     {

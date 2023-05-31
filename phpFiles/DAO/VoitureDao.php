@@ -82,6 +82,16 @@ class VoitureDao {
         return $allNames;
     }
 
+    public function editObj($immatriculation,$compteur):void{
+        $obj = $this->getObjById($immatriculation);
+        if ($compteur!=null){
+            $request = "UPDATE Voiture SET compteur='$compteur' WHERE immatriculation='$immatriculation'";
+            $request_result = $this->connexion->prepare($request);
+            $request_result->execute();
+        }
+
+    }
+
     public function insertObj($immatriculation,$compteur,$idModele):void{
         $request = "INSERT INTO Voiture (immatriculation, compteur, id_modele) VALUES (?, ?, ?)";
         $request_result = $this->connexion->prepare($request);
