@@ -10,7 +10,7 @@ $idTypeClient = $_POST['idTypeClient'];
 fileStart("Attente Client");
 navBar("Clients");
 ?>
-<h1 class="font font-bold text-gre-900 text-2xl py-3 flex justify-center">Essaie de l'ajout du client à la table...</h1>
+<h1 class="font font-bold text-gre-900 text-2xl py-3 flex justify-center">Essaie de l'ajout du client...</h1>
 <?php
 $DaoClient->insertObj($id,$lastName,$name,$address,$idTypeClient);
 $allClient = $DaoClient->getAllId();

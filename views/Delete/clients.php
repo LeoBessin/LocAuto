@@ -6,7 +6,7 @@ $idClient = $_GET['idClient'];
 fileStart("Supression Client");
 navBar("Parc");
 ?>
-<h1 class="font font-bold text-gre-900 text-2xl py-3 flex justify-center">Essaie de la supression du client à la table...</h1>
+<h1 class="font font-bold text-gre-900 text-2xl py-3 flex justify-center">Essaie de la supression du client...</h1>
 <?php
 $DaoClient->deleteFromId($idClient);
 $allClient = $DaoClient->getAllId();

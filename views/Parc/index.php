@@ -4,7 +4,7 @@ include "../../phpFiles/widgets/html-part.php";
 $DaoLocation = LocationDao::getInstance();
 $DaoVoiture = VoitureDao::getInstance();
 $allVoiture = $DaoVoiture->getAllObj();
-$availableId = $DaoVoiture->getAllIdAvailable();
+$availableId = $DaoVoiture->getAllIdUnavailable();
 $lastSelect = null;
 fileStart("Parc");
 navBar("Parc");
@@ -43,7 +43,6 @@ navBar("Parc");
     echo '</button>';
     ?>
 </div>
-
 <?php
 fileEnd();
 ?>

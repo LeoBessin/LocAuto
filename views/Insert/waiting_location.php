@@ -24,7 +24,7 @@ if(isset($_POST['option'])){
 fileStart("Attente Location");
 navBar("Parc");
 ?>
-<h1 class="font font-bold text-gre-900 text-2xl py-3 flex justify-center">Essaie de l'ajout de la location à la table...</h1>
+<h1 class="font font-bold text-gre-900 text-2xl py-3 flex justify-center">Essaie de l'ajout de la location...</h1>
 <?php
 $DaoLocation->insertObj($id,$dateDebut,$dateFin,$compteurDebut,$compteurFin,$idVoiture,intval($idClient),$optionChoose);
 

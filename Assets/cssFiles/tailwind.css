@@ -568,6 +568,10 @@ video {
   margin-bottom: 0.5rem;
 }
 
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
 .mb-8 {
   margin-bottom: 2rem;
 }
@@ -637,6 +641,10 @@ video {
   display: none;
 }
 
+.h-12 {
+  height: 3rem;
+}
+
 .h-16 {
   height: 4rem;
 }
@@ -693,6 +701,10 @@ video {
   width: 18rem;
 }
 
+.w-96 {
+  width: 24rem;
+}
+
 .w-full {
   width: 100%;
 }
@@ -717,8 +729,18 @@ video {
   flex-shrink: 0;
 }
 
+.transform {
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .cursor-not-allowed {
   cursor: not-allowed;
+}
+
+.select-none {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
 .list-inside {
@@ -835,6 +857,10 @@ video {
   border-radius: 0.375rem;
 }
 
+.rounded-xl {
+  border-radius: 0.75rem;
+}
+
 .border {
   border-width: 1px;
 }
@@ -892,6 +918,10 @@ video {
   background-size: auto;
 }
 
+.bg-clip-border {
+  background-clip: border-box;
+}
+
 .bg-center {
   background-position: center;
 }
@@ -910,6 +940,10 @@ video {
 
 .p-4 {
   padding: 1rem;
+}
+
+.p-6 {
+  padding: 1.5rem;
 }
 
 .px-2 {
@@ -983,6 +1017,10 @@ video {
   padding-right: 1rem;
 }
 
+.pt-0 {
+  padding-top: 0px;
+}
+
 .text-left {
   text-align: left;
 }
@@ -1001,6 +1039,10 @@ video {
 
 .font-barlow {
   font-family: "barlow";
+}
+
+.font-sans {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 .text-2xl {
@@ -1043,12 +1085,20 @@ video {
   line-height: 1rem;
 }
 
+.\!font-medium {
+  font-weight: 500 !important;
+}
+
 .font-black {
   font-weight: 900;
 }
 
 .font-bold {
   font-weight: 700;
+}
+
+.font-light {
+  font-weight: 300;
 }
 
 .font-medium {
@@ -1061,6 +1111,18 @@ video {
 
 .uppercase {
   text-transform: uppercase;
+}
+
+.leading-relaxed {
+  line-height: 1.625;
+}
+
+.leading-snug {
+  line-height: 1.375;
+}
+
+.tracking-normal {
+  letter-spacing: 0em;
 }
 
 .text-blue-600 {
@@ -1098,9 +1160,23 @@ video {
   color: rgb(34 197 94 / var(--tw-text-opacity));
 }
 
+.text-inherit {
+  color: inherit;
+}
+
+.text-pink-500 {
+  --tw-text-opacity: 1;
+  color: rgb(236 72 153 / var(--tw-text-opacity));
+}
+
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.antialiased {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .opacity-0 {
@@ -1123,6 +1199,12 @@ video {
   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.\!transition-colors {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke !important;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition-duration: 150ms !important;
 }
 
 .transition-\[opacity\2c margin\] {
@@ -1164,6 +1246,15 @@ video {
 .hover\:bg-gray-50:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-gray-500\/10:hover {
+  background-color: rgb(107 114 128 / 0.1);
+}
+
+.hover\:\!text-pink-500:hover {
+  --tw-text-opacity: 1 !important;
+  color: rgb(236 72 153 / var(--tw-text-opacity)) !important;
 }
 
 .hover\:underline:hover {
@@ -1213,6 +1304,24 @@ video {
 
 .focus\:ring-offset-white:focus {
   --tw-ring-offset-color: #fff;
+}
+
+.active\:bg-gray-500\/30:active {
+  background-color: rgb(107 114 128 / 0.3);
+}
+
+.disabled\:pointer-events-none:disabled {
+  pointer-events: none;
+}
+
+.disabled\:opacity-50:disabled {
+  opacity: 0.5;
+}
+
+.disabled\:shadow-none:disabled {
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 @media (prefers-color-scheme: dark) {

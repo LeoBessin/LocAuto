@@ -10,7 +10,7 @@ navBar("Clients");?>
 <div class="flex align-middle justify-center flex-col w-full items-center">
     <h1 class="font font-bold text-gre-900 text-2xl py-3 flex justify-center">Ajout d'un client</h1>
     <form style="width: 66%" class="flex justify-center flex-col" action="waiting_client.php" method="post">
-        <input type="hidden" name="id" aria-label="disabled input 2" class="mb-8 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed" value="<?php echo $lastClient==null ? 1 : $lastClient->getId()+1 ?>" readonly>
+        <input type="hidden" name="id" aria-label="disabled input 2" class="mb-8 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed" value="<?= $lastClient==null ? 1 : $lastClient->getId()+1 ?>" readonly>
 
         <label for="lastName" class="block mb-2 text-sm font-medium text-gray-900 ">Nom</label>
         <input class="mb-8 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" name="lastName" type="text" placeholder="Musk" required>

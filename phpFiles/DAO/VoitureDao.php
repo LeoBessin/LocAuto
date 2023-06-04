@@ -46,16 +46,28 @@ class VoitureDao {
 
     }
 
-    public function getAllIdAvailable():array{
+    public function getAllIdUnavailable():array{
         $allObj = array();
-        $request = "SELECT immatriculation,date_fin FROM Voiture RIGHT JOIN Location ON Voiture.immatriculation=Location.id_voiture;";
+        $request = "SELECT immatriculation,date_fin,date_debut FROM Voiture RIGHT JOIN Location ON Voiture.immatriculation=Location.id_voiture;";
         $request_result = mysqli_query($this->connexion, $request);
         while ($data = mysqli_fetch_object($request_result)){
             $dateToday = date("Y-m-d");
             $dateEndLoc = $data->date_fin;
-            if ($dateEndLoc >= $dateToday){
+            $dateStartLoc = $data->date_debut;
+            if ($dateEndLoc > $dateToday && $dateStartLoc < $dateToday){
                 $allObj[] = $data->immatriculation;
             }
+        }
+        return $allObj;
+
+    }
+
+    public function getAllObjAvailable():array{
+        $allObj = array();
+        $request = "SELECT * FROM Voiture LEFT JOIN Location ON Voiture.immatriculation=Location.id_voiture WHERE id_location is NULL";
+        $request_result = mysqli_query($this->connexion, $request);
+        while ($data = mysqli_fetch_object($request_result)){
+            $allObj[] =  $this->dictToObj($data);
         }
         return $allObj;
 

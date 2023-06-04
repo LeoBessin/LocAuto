@@ -6,7 +6,7 @@ $idVoiture = $_GET['idVoiture'];
 fileStart("Supression Voiture");
 navBar("Parc");
 ?>
-<h1 class="font font-bold text-gre-900 text-2xl py-3 flex justify-center">Essaie de la supression de la voiture à la table...</h1>
+<h1 class="font font-bold text-gre-900 text-2xl py-3 flex justify-center">Essaie de la supression de la voiture...</h1>
 <?php
 $DaoVoiture->deleteFromImmatriculation($idVoiture);
 $allVoiture = $DaoVoiture->getAllId();
