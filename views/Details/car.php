@@ -13,7 +13,7 @@ navBar("Parc");
 ?>
 <h1 class="font font-bold text-gre-900 text-4xl py-3 flex justify-center">Détail de la voiture 🔍</h1>
 <div class="flex flex-col justify-center items-center">
-    <div class="relative flex w-full max-w-[20rem] flex-col rounded-xl bg-white bg-clip-border p-8 shadow-md shadow-gray-500/40">
+    <div class="relative flex w-full max-w-[23rem] flex-col rounded-xl bg-white bg-clip-border p-8 shadow-md shadow-gray-500/40">
         <div class="relative m-0 mb-4 overflow-hidden rounded-none border-b border-white/10 bg-transparent bg-clip-border pb-8 text-center text-gray-700 shadow-none">
             <p class="block font-sans text-sm font-normal uppercase leading-normal antialiased">
                 Immatriculation : <?= $voiture->getImmatriculation() ?>

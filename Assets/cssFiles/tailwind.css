@@ -881,6 +881,10 @@ video {
   max-width: 20rem;
 }
 
+.max-w-\[23rem\] {
+  max-width: 23rem;
+}
+
 .max-w-md {
   max-width: 28rem;
 }
