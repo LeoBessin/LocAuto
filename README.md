@@ -2,7 +2,7 @@
 > Projet réalisé dans le cadre d'une évaluation de fin de module du cours de Php de 
 > [Mr Bernard Valton](https://www.linkedin.com/in/bernard-valton-93a38322/), formateur 
 > au sein de l'école d'informatique [Sup de Vinci](https://www.supdevinci.fr/). 
-## Stack utilisé :
+## Stack utilisée :
 - Front End :
   - HTML
   - JavaScript
