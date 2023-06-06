@@ -2,7 +2,7 @@
 include "../../phpFiles/DAO/ClientDao.php";
 include "../../phpFiles/widgets/html-part.php";
 $DaoClient = ClientDao::getInstance();
-$idClient = $_GET['idClient'];
+$idClient = $_GET["idClient"];
 fileStart("Supression Client");
 navBar("Parc");
 ?>
@@ -10,7 +10,7 @@ navBar("Parc");
 <?php
 $DaoClient->deleteFromId($idClient);
 $allClient = $DaoClient->getAllId();
-if (!in_array($idClient,$allClient)){
+if (!in_array($idClient, $allClient)) {
     echo '
 <div class="flex flex-col justify-center items-center mt-8">
     <ul class="max-w-md space-y-2 text-gray-500 list-inside flex justify-center flex-wrap flex-col">
@@ -19,15 +19,12 @@ if (!in_array($idClient,$allClient)){
             <p class="text-xl">Succés !</p>
         </li>
     </ul>
-    <a class="p-4 rounded-lg mt-8 text-white font-bold" style="background: #06D6A0" href="../Parc/index.php" >Redirection vers l'."'".'annuaire des clients</a>
+    <a class="p-4 rounded-lg mt-8 text-white font-bold" style="background: #06D6A0" href="../Parc/index.php" >Redirection vers l' .
+        "'" .
+        'annuaire des clients</a>
 </div>';
-
 }
-
-
-
 ?>
 
-<?php
-fileEnd();
+<?php fileEnd();
 ?>

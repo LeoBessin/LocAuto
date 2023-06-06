@@ -1,0 +1,42 @@
+[
+  {
+    "rating": 3,
+    "comment": "La voiture est correcte, mais elle pourrait être meilleure."
+  },
+  {
+    "rating": 4,
+    "comment": "J'aime beaucoup cette voiture. Elle est confortable et facile à conduire."
+  },
+  {
+    "rating": 5,
+    "comment": "Cette voiture est incroyable! Elle est rapide, élégante et très confortable."
+  },
+  {
+    "rating": 4,
+    "comment": "Je suis très satisfait de cette voiture. Elle est fiable et économique."
+  },
+  {
+    "rating": 3,
+    "comment": "La voiture est correcte, mais elle manque de puissance."
+  },
+  {
+    "rating": 5,
+    "comment": "Je suis amoureux de cette voiture! Elle est magnifique et très performante."
+  },
+  {
+    "rating": 4,
+    "comment": "Cette voiture est très agréable à conduire. Elle est confortable et silencieuse."
+  },
+  {
+    "rating": 3,
+    "comment": "La voiture est correcte, mais elle n'est pas très pratique pour les familles."
+  },
+  {
+    "rating": 5,
+    "comment": "Cette voiture est tout simplement parfaite! Elle est belle, rapide et très confortable."
+  },
+  {
+    "rating": 4,
+    "comment": "J'aime beaucoup cette voiture. Elle est élégante et facile à conduire."
+  }
+]

@@ -1,7 +1,8 @@
 <?php
 require_once "../../phpFiles/classes/VoitureClass.php";
 require_once "../../phpFiles/classes/ClientClass.php";
-class LocationClass {
+class LocationClass
+{
     // Atributs
     private ?int $id;
     private ?string $date_debut;
@@ -13,7 +14,16 @@ class LocationClass {
     private ?array $option;
 
     // Methods
-    public function __construct($id,$date_debut,$date_fin,$compteur_debut,$compteur_fin,$voiture,$client,$option) {
+    public function __construct(
+        $id,
+        $date_debut,
+        $date_fin,
+        $compteur_debut,
+        $compteur_fin,
+        $voiture,
+        $client,
+        $option
+    ) {
         $this->id = $id;
         $this->date_debut = $date_debut;
         $this->date_fin = $date_fin;
@@ -23,29 +33,36 @@ class LocationClass {
         $this->client = $client;
         $this->option = $option;
     }
-    public function getId(): int{
+    public function getId(): int
+    {
         return $this->id;
     }
-    public function getDate_debut(): string{
+    public function getDate_debut(): string
+    {
         return $this->date_debut;
     }
-    public function getDate_fin(): string{
+    public function getDate_fin(): string
+    {
         return $this->date_fin;
     }
-    public function getCompteur_debut(): string{
+    public function getCompteur_debut(): string
+    {
         return $this->compteur_debut;
     }
-    public function getCompteur_fin(): string{
+    public function getCompteur_fin(): string
+    {
         return $this->compteur_fin;
     }
-    public function getVoiture(): VoitureClass{
+    public function getVoiture(): VoitureClass
+    {
         return $this->voiture;
     }
-    public function getClient(): ClientClass{
+    public function getClient(): ClientClass
+    {
         return $this->client;
     }
-    public function getOption(): array{
+    public function getOption(): array
+    {
         return $this->option;
     }
-
 }

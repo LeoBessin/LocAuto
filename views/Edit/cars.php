@@ -2,7 +2,7 @@
 include "../../phpFiles/DAO/VoitureDao.php";
 include "../../phpFiles/widgets/html-part.php";
 $DaoVoiture = VoitureDao::getInstance();
-$immatriculation = $_GET['idVoiture'];
+$immatriculation = $_GET["idVoiture"];
 $voiture = $DaoVoiture->getObjById($immatriculation);
 fileStart("Modification voiture");
 navBar("Parc");
@@ -19,6 +19,5 @@ navBar("Parc");
 
 </div>
 
-<?php
-fileEnd();
+<?php fileEnd();
 ?>

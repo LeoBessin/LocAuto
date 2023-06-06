@@ -4,21 +4,20 @@ include "../../phpFiles/widgets/html-part.php";
 $DaoLocation = LocationDao::getInstance();
 $DaoOption = OptionDao::getInstance();
 $allOption = $DaoOption->getAllObj();
-$id = $_POST['id'];
-$dateDebut = $_POST['date-debut'];
-$dateFin = $_POST['date-fin'];
-$compteurDebut = $_POST['compteur-debut'];
-$compteurFin = $_POST['compteur-fin'];
-$idClient = $_POST['id-client'];
-$idVoiture = $_POST['id-voiture'];
+$id = $_POST["id"];
+$dateDebut = $_POST["date-debut"];
+$dateFin = $_POST["date-fin"];
+$compteurDebut = $_POST["compteur-debut"];
+$compteurFin = $_POST["compteur-fin"];
+$idClient = $_POST["id-client"];
+$idVoiture = $_POST["id-voiture"];
 
-$optionChoose = array();
+$optionChoose = [];
 
-if(isset($_POST['option'])){
-    foreach ($_POST['option'] as $option){
+if (isset($_POST["option"])) {
+    foreach ($_POST["option"] as $option) {
         $optionChoose[] = $option;
     }
-
 }
 
 fileStart("Attente Location");
@@ -26,10 +25,19 @@ navBar("Parc");
 ?>
 <h1 class="font font-bold text-gre-900 text-2xl py-3 flex justify-center">Essaie de l'ajout de la location...</h1>
 <?php
-$DaoLocation->insertObj($id,$dateDebut,$dateFin,$compteurDebut,$compteurFin,$idVoiture,intval($idClient),$optionChoose);
+$DaoLocation->insertObj(
+    $id,
+    $dateDebut,
+    $dateFin,
+    $compteurDebut,
+    $compteurFin,
+    $idVoiture,
+    intval($idClient),
+    $optionChoose
+);
 
 $allLocation = $DaoLocation->getAllId();
-if (in_array($id,$allLocation)) {
+if (in_array($id, $allLocation)) {
     echo '
 <div class="flex flex-col justify-center items-center mt-8">
     <ul class="max-w-md space-y-2 text-gray-500 list-inside flex justify-center flex-wrap flex-col">
@@ -40,11 +48,7 @@ if (in_array($id,$allLocation)) {
     </ul>
     <a class="p-4 rounded-lg mt-8 text-white font-bold" style="background: #06D6A0" href="../Parc/index.php" >Redirection vers le parc de voitures</a>
 </div>';
-
 }
-
-?>
-
-<?php
 fileEnd();
+
 ?>

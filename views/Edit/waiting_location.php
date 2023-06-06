@@ -1,21 +1,17 @@
 <?php
-include "../../phpFiles/DAO/ClientDao.php";
+include "../../phpFiles/DAO/LocationDao.php";
 include "../../phpFiles/widgets/html-part.php";
-$DaoClient = ClientDao::getInstance();
+$DaoLocation = LocationDao::getInstance();
 $id = $_POST["id"];
-$lastName = $_POST["lastName"];
-$name = $_POST["name"];
-$address = $_POST["address"];
-$idTypeClient = $_POST["idTypeClient"];
-fileStart("Attente Client");
-navBar("Clients");
+$dateFin = $_POST["date-fin"];
+$compteurFin = $_POST["compteur-fin"];
+fileStart("Attente Modification Location");
+navBar("Client");
 ?>
-<h1 class="font font-bold text-gre-900 text-2xl py-3 flex justify-center">Essaie de l'ajout du client...</h1>
+<h1 class="font font-bold text-gre-900 text-2xl py-3 flex justify-center">Essaie de la modification de la location...</h1>
 <?php
-$DaoClient->insertObj($id, $lastName, $name, $address, $idTypeClient);
-$allClient = $DaoClient->getAllId();
-if (in_array($id, $allClient)) {
-    echo '
+$DaoLocation->editObj($id, $dateFin, $compteurFin);
+?>
 <div class="flex flex-col justify-center items-center mt-8">
     <ul class="max-w-md space-y-2 text-gray-500 list-inside flex justify-center flex-wrap flex-col">
         <li class="flex justify-center">
@@ -23,11 +19,8 @@ if (in_array($id, $allClient)) {
             <p class="text-xl">Succés !</p>
         </li>
     </ul>
-    <a class="p-4 rounded-lg mt-8 text-white font-bold" style="background: #06D6A0" href="../Client/index.php" >Redirection vers l' .
-        "'" .
-        'annuaire des clients</a>
-</div>';
-}
-fileEnd();
+    <a class="p-4 rounded-lg mt-8 text-white font-bold" style="background: #06D6A0" href="../Home/" >Redirection vers l'acceuil</a>
+</div>
 
+<?php fileEnd();
 ?>
